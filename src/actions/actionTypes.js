@@ -1,0 +1,8 @@
+
+export const LOAD_IMAGE = 'LOAD_IMAGE'
+export const STORE_IMAGE = 'STORE_IMAGE'
+export const IMAGE_ERR = 'IMAGE_ERR'
+
+export const ADD_TO_FAVOURITE = 'ADD_TO_FAVOURITE'
+export const REMOVE_FROM_FAVOURITE = 'REMOVE_FROM_FAVOURITE'
+
