@@ -1,7 +1,9 @@
 export const initialStore = {
-    photos: {
-        loading: false,
-        data: [],
-        total: 0
-    }
+  photos: {
+    loading: false,
+    data: [],
+    current: [],
+    page: 1,
+    total: 0
+  }
 }

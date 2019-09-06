@@ -1,0 +1,17 @@
+.Gallary {
+    
+}
+
+.GallaryCard {
+    height: 150px;
+    width: 150px;
+    margin: 5px;
+    border: 1px solid #dbdbdb
+}
+
+.GallaryList {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 10px;
+}
