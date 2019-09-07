@@ -1,8 +1,20 @@
 .Gallary {
-    
+    padding: 20px;
+    &__header {
+        padding: 0px 20px;
+        color: #d32776;
+        font-weight: bolder;
+        font-size: 25px;
+
+    }
+   &__pagination {
+       display: flex;   
+       justify-content: center;
+   } 
 }
 
 .GallaryCard {
+    cursor: pointer;
     height: 150px;
     width: 150px;
     margin: 5px;
