@@ -1,6 +1,7 @@
 import React from 'react'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import Gallary from './containers/Gallary'
+import Favourite from './containers/Gallary/Layouts/Favourite'
 
 function App () {
   return (
@@ -8,7 +9,7 @@ function App () {
       <Router>
         <Switch>
           <Route path='/' exact component={Gallary} />
-          <Route path='/favourite' component={() => (<h1>Favourite images</h1>)} />
+          <Route path='/favourite' component={Favourite} />
         </Switch>
       </Router>
     </div>

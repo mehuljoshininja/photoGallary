@@ -4,6 +4,7 @@ export const initialStore = {
     data: [],
     current: [],
     page: 1,
-    total: 0
+    total: 0,
+    favourite: []
   }
 }

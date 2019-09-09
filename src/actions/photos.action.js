@@ -7,3 +7,7 @@ export const storePhotos = (photos) => {
 export const fetchNextBatch = (pageNo) => {
   return { type: type.STORE_NEXT_BATCH, payload: pageNo }
 }
+
+export const selectFavImage = (id) => {
+  return { type: type.ADD_TO_FAV, payload: id }
+}

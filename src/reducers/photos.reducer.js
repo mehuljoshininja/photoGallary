@@ -15,7 +15,12 @@ export const photoReducer = (state = initialStore.photos, action) => {
     case type.FETCH_NEXT_BATCH:
       return {
         ...state,
-        current: state.data.slice(action.data.payload * 15, (action.data.payload * 15) + 15)
+        current: state.data.slice((action.data.payload - 1) * 15, ((action.data.payload - 1) * 15) + 15)
+      }
+    case type.STORE_TO_FAVOURITE:
+      return {
+        ...state,
+        favourite: [...state.favourite, state.current.find(x => x.id === action.id.payload)]
       }
     default:
       return state

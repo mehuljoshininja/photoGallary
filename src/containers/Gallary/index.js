@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { Link } from 'react-router-dom'
 import { Pagination, Modal } from 'antd'
 import { bindActionCreators } from 'redux'
 import * as photoActions from '../../actions/photos.action'
@@ -35,15 +36,32 @@ class Gallary extends Component {
     })
   }
 
+  addToFavourite = (id) => {
+    const { actions } = this.props
+    actions.selectFavImage(id)
+  }
+
   render () {
-    const { photos } = this.props
+    const { photos, favourite } = this.props
+    const images = photos.map(m => {
+      if (favourite.find(o => o.id === m.id)) {
+        return {
+          ...m, fav: true
+        }
+      } else {
+        return {
+          ...m, fav: false
+        }
+      }
+    })
     const { preview, openPreview } = this.state
     return (
       <div className={styles.Gallary}>
         <div className={styles.Gallary__header}>
           <p>Gallary </p>
+          <Link className={styles.Gallary__header__link} to='/favourite'> My Favourite List({favourite.length}) </Link>
         </div>
-        <GallaryList data={photos} showPreivew={this.showPreivew} />
+        <GallaryList data={images} addToFavourite={this.addToFavourite} showPreivew={this.showPreivew} />
         <div className={styles.Gallary__pagination}>
           <Pagination
             onChange={this.handlePagination}
@@ -72,7 +90,8 @@ const mapStateToProps = state => ({
   photos: state.photos.current,
   error: state.photos.error,
   isLoading: state.photos.loading,
-  total: state.photos.total
+  total: state.photos.total,
+  favourite: state.photos.favourite
 })
 
 const mapDispatchToProps = dispatch => ({
