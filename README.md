@@ -1,5 +1,10 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## To run project
+    1. clone project `git clone https://github.com/mehuljoshininja/photoGallary.git`
+    2. install dependencies using `npm install or yarn`
+    3. run project using `npm start or yarn start`
+
 ## Available Scripts
 
 In the project directory, you can run:
