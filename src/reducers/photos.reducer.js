@@ -15,6 +15,7 @@ export const photoReducer = (state = initialStore.photos, action) => {
         total: action.payload.length
       }
     case type.FETCH_NEXT_BATCH:
+      console.log('action.payload', action.payload)
       return {
         ...state,
         current: state.data.slice((action.data.payload - 1) * 15, ((action.data.payload - 1) * 15) + 15)
