@@ -1,5 +1,7 @@
 import * as type from '../actions/actionTypes'
 import { initialStore } from '../sagas/initialStore'
+import remove from 'lodash/remove'
+import clone from 'lodash/clone'
 
 export const photoReducer = (state = initialStore.photos, action) => {
   switch (action.type) {
@@ -22,6 +24,12 @@ export const photoReducer = (state = initialStore.photos, action) => {
         ...state,
         favourite: [...state.favourite, state.current.find(x => x.id === action.id.payload)]
       }
+    case type.DELETE_FROM_FAV:
+      return {
+        ...state,
+        favourite: remove(clone(state.favourite), o => o.id !== action.id.payload)
+      }
+
     default:
       return state
   }

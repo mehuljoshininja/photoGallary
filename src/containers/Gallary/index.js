@@ -26,6 +26,11 @@ class Gallary extends Component {
     actions.fetchNextBatch(page)
   }
 
+  removeFromFavourite = (id) => {
+    const { actions } = this.props
+    actions.removeFav(id)
+  }
+
   showPreivew = (id) => {
     const { photos } = this.props
     console.log('id', id)
@@ -42,7 +47,7 @@ class Gallary extends Component {
   }
 
   render () {
-    const { photos, favourite } = this.props
+    const { photos, favourite, total } = this.props
     const images = photos.map(m => {
       if (favourite.find(o => o.id === m.id)) {
         return {
@@ -59,26 +64,36 @@ class Gallary extends Component {
       <div className={styles.Gallary}>
         <div className={styles.Gallary__header}>
           <p>Gallary </p>
-          <Link className={styles.Gallary__header__link} to='/favourite'> My Favourite List({favourite.length}) </Link>
+          <div className={styles.Gallary__header__right}>
+            <Link className={styles.Gallary__header__link} to='/favourite'> My Favourite List({favourite.length}) </Link>
+          </div>
         </div>
-        <GallaryList data={images} addToFavourite={this.addToFavourite} showPreivew={this.showPreivew} />
+        <GallaryList
+          data={images}
+          addToFavourite={this.addToFavourite}
+          showPreivew={this.showPreivew}
+          removeFromFavourite={this.removeFromFavourite}
+        />
         <div className={styles.Gallary__pagination}>
           <Pagination
             onChange={this.handlePagination}
             defaultCurrent={1}
-            total={500}
+            total={total}
             pageSize={15}
           />
         </div>
         <Modal
           visible={openPreview}
-          title='preview'
+          title={false}
           onCancel={() => this.setState({ openPreview: false, preview: {} })}
           footer={false}
-          width={700}
+          width={500}
+          header={false}
           closable={false}
         >
-          <img src={preview.url} />
+          <div className={styles.Gallary__preview}>
+            <img src={preview.url} className={styles.Gallary__preview__img} />
+          </div>
 
         </Modal>
       </div>

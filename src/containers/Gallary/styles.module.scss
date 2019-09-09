@@ -6,8 +6,11 @@
         font-weight: bolder;
         font-size: 25px;
         align-items: center;
-        justify-content: flex-start;
+        justify-content: space-between;
         display: flex;
+        &__right {
+            float: right;
+        }
         &__link {
             font-size: 12px;
             align-items: center;
@@ -26,6 +29,15 @@
        display: flex;   
        justify-content: center;
    } 
+   &__preview {
+       display: flex;
+       justify-content: center;
+       align-items: center;
+       &__img {
+        height: 500px;
+        width:  500px;
+       }
+   }
 }
 
 .GallaryCard {
@@ -71,12 +83,21 @@
     padding: 20px;
     &__header {
         padding: 20px 0px;
+        user-select: none;
         font-size: 18px;
+        display: flex;
+        justify-content: space-between;
+        text-align: center;
         color: #d32776;
+        &__link {
+            font-size: 14px;
+
+        }
     }
 
     &__body {
         display: flex;
+        justify-content: center;
         flex-wrap: wrap;
         padding: 20px 0px;
         text-align: center;

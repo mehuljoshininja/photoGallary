@@ -29,10 +29,15 @@ export function * addToFav (id) {
   yield put({ type: types.STORE_TO_FAVOURITE, id })
 }
 
+export function * removeFav (id) {
+  yield put({ type: types.DELETE_FROM_FAV, id })
+}
+
 export function * photoSaga () {
   yield all([
     takeEvery(types.STORE_IMAGE, fetchPhotos),
     takeEvery(types.STORE_NEXT_BATCH, nextBatch),
-    takeEvery(types.ADD_TO_FAV, addToFav)
+    takeEvery(types.ADD_TO_FAV, addToFav),
+    takeEvery(types.REMOVE_FROM_FAV, removeFav)
   ])
 }

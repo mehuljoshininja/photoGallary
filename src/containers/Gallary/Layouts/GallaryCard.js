@@ -2,7 +2,7 @@ import React from 'react'
 import { Icon } from 'antd'
 import styles from '../styles.module.scss'
 
-function GallaryCard ({ card, onlyPreview, showPreivew, addToFavourite = () => {} }) {
+function GallaryCard ({ card, onlyPreview, showPreivew, removeFromFavourite = () => {}, addToFavourite = () => {} }) {
   const { thumbnailUrl, id, fav } = card
   return (
     <>
@@ -12,15 +12,13 @@ function GallaryCard ({ card, onlyPreview, showPreivew, addToFavourite = () => {
         </div>
         {
           !onlyPreview &&
-            <div onClick={!fav ? () => addToFavourite(id) : () => {}} className={fav ? styles.GallaryCard__favBtnDisable : styles.GallaryCard__favBtn}>
-            Add to Favourite
-            </div>
-        }
-
-        {
-          fav &&
-            <div className={styles.GallaryCard__favImg}>
-              <Icon type='heart' theme='filled' />
+            <div
+              className={styles.GallaryCard__favImg}
+              onClick={!fav ? () => addToFavourite(id) : () => removeFromFavourite(id)}
+            >
+              {fav
+                ? <Icon type='heart' theme='filled' />
+                : <Icon type='heart' />}
             </div>
         }
 
